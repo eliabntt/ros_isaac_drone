@@ -4,9 +4,6 @@
 [submodule "catkin_simple"]
 	path = catkin_simple
 	url = https://github.com/catkin/catkin_simple.git
-[submodule "custom_6dof_joint_controller_ros"]
-	path = custom_6dof_joint_controller
-	url = https://github.com/eliabntt/custom_6dof_joint_controller
 [submodule "mav_control_rw"]
 	path = mav_control_rw
 	url = https://github.com/eliabntt/mav_control_rw
@@ -16,3 +13,6 @@
 [submodule "moveit_based_collision_checker_and_placement"]
 	path = moveit_based_collision_checker_and_placement
 	url = https://github.com/eliabntt/moveit_based_collision_checker_and_placement
+[submodule "custom_6dof_joint_controller"]
+	path = custom_6dof_joint_controller
+	url = https://github.com/eliabntt/custom_6dof_joint_controller
