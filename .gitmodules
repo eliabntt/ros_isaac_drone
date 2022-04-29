@@ -4,7 +4,7 @@
 [submodule "catkin_simple"]
 	path = catkin_simple
 	url = https://github.com/catkin/catkin_simple.git
-[submodule "custom_joint_controller_ros"]
+[submodule "custom_6dof_joint_controller_ros"]
 	path = custom_6dof_joint_controller
 	url = https://github.com/eliabntt/custom_6dof_joint_controller
 [submodule "mav_control_rw"]
