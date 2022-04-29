@@ -1,0 +1,18 @@
+[submodule "FUEL"]
+	path = FUEL
+	url = ./FUEL
+[submodule "catkin_simple"]
+	path = catkin_simple
+	url = ./catkin_simple
+[submodule "custom_joint_controller_ros"]
+	path = custom_joint_controller_ros
+	url = ./custom_joint_controller_ros
+[submodule "mav_control_rw"]
+	path = mav_control_rw
+	url = ./mav_comm
+[submodule "mav_comm"]
+	path = mav_comm
+	url = ./mav_comm
+[submodule "moveit_based_collision_checker_and_placement"]
+	path = moveit_based_collision_checker_and_placement
+	url = ./moveit_based_collision_checker_and_placement
