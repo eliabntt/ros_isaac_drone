@@ -8,4 +8,5 @@ sudo apt-get install liblapacke-dev
 sudo apt install libdw-dev
 ```
 
+build with `catkin build`
 be sure to **FIRST BUILD** *moveit_core* and **THEN** source the env and THEN build everything else
