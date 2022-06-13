@@ -3,7 +3,7 @@
 download and install nlopt https://github.com/stevengj/nlopt.git
 
 ```
-ros-noetic-eigen-stl-containers ros-noetic-geometric-shapes ros-noetic-moveit ros-noetic-moveit-visual-tools ros-noetic-octomap*	
+rosdep install --from-paths src --ignore-src -r -y	
 sudo apt-get install liblapacke-dev
 sudo apt install libdw-dev
 ```
