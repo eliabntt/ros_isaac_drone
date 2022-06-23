@@ -37,7 +37,7 @@ do
 	screen -L -Logfile ${3}/${currentenv}/rosbag.log -d -m -S ROSRECORDER zsh -i -c "rosbag record -a -O ${3}/${currentenv}/${currentenv}.bag --split --size=1024 -b 0"
 	sleep 300
 	result=1
-	cnt=3000
+	cnt=25000
 	while [ $result -eq 1 ]
 	do
 		sleep 1
