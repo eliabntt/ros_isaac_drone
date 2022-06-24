@@ -35,12 +35,14 @@ do
 	mkdir -p ${3}/${currentenv}
 	screen -L -Logfile ${3}/${currentenv}/isaaclog.log -d -m -S ISAACSIM zsh -i -c "cd ${6} && ./python.sh standalone_examples/api/omni.isaac.ros_bridge/my_robot.py --/renderer/enabled='rtx,iray'  --config='/home/ebonetto/.local/share/ov/pkg/isaac_sim-2021.2.1/standalone_examples/api/omni.isaac.ros_bridge/config.yaml' --fix_env=${currentenv} && ./kill.sh"
 	screen -L -Logfile ${3}/${currentenv}/rosbag.log -d -m -S ROSRECORDER zsh -i -c "rosbag record -a -O ${3}/${currentenv}/${currentenv}.bag --split --size=1024 -b 0"
-	sleep 300
+	echo "Launched"
+	sleep 10
 	result=1
-	cnt=25000
+	cnt=10
+	echo $cnt
 	while [ $result -eq 1 ]
 	do
-		sleep 1
+		sleep 5
 		screen -wipe > suppress_output
 		if ! screen -list | grep -q "ISAACSIM"; then
 			rm suppress_output
@@ -51,11 +53,17 @@ do
 		if [[ "$cnt" -eq 0 ]]; then
 			for session in $(screen -ls); do screen -S "${session}" -X quit; done
 			echo "ERROR had to manually stop the sessions" > ${3}/${currentenv}/error.txt
+			sleep 3
+			echo "ERROR"
+			screen -wipe > suppress_output
 		fi
 	done
+	screen -d -m -S ISAACSIMkill zsh -i -c "cd ${6} && ./kill.sh"
+	echo "KILLED"
+	sleep 3
 	#screen -S ROSRECORDER -X stuff "^C"
 	screen -d -m -S ISAACRM zsh -i -c "cd ${6} && rm kit/logs -rf"
 	for session in $(screen -ls | grep -o '[0-9]*\.ROSRECORDER'); do screen -S "${session}" -X stuff "^C"; done
-	screen -d -m -S mover zsh -i -c "mv ${3}/${currentenv} ${1}/"
+	screen -d -m -S mover${currentenv} zsh -i -c "mv ${3}/${currentenv} ${1}/"
 	echo "Finished Processing ${currentenv}"
 done
