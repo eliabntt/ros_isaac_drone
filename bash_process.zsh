@@ -33,9 +33,10 @@ do
 	echo "Processing ${currentenv}"
 	rm ${3}/${currentenv}/ -rf
 	rm ${1}/${currentenv}/ -rf
+	mkdir -p ${1}/${currentenv}
 	mkdir -p ${3}/${currentenv}
 	screen -L -Logfile ${3}/${currentenv}/isaaclog.log -d -m -S ISAACSIM zsh -i -c "cd ${6} && ./python.sh standalone_examples/api/omni.isaac.ros_bridge/my_robot.py --/renderer/enabled='rtx,iray'  --config='/home/ebonetto/.local/share/ov/pkg/isaac_sim-2021.2.1/standalone_examples/api/omni.isaac.ros_bridge/config.yaml' --fix_env=${currentenv} && ./kill.sh"
-	screen -L -Logfile ${3}/${currentenv}/rosbag.log -d -m -S ROSRECORDER zsh -i -c "rosbag record -a -O ${3}/${currentenv}/${currentenv}.bag --split --size=1024 -b 0"
+	screen -L -Logfile ${3}/${currentenv}/rosbag.log -d -m -S ROSRECORDER zsh -i -c "rosbag record -a -O ${1}/${currentenv}/${currentenv}.bag --split --size=1024 -b 0"
 	echo "Launched"
 	sleep 200
 	result=1
@@ -64,6 +65,7 @@ do
 	#screen -S ROSRECORDER -X stuff "^C"
 	screen -d -m -S ISAACRM zsh -i -c "cd ${6} && rm kit/logs -rf"
 	for session in $(screen -ls | grep -o '[0-9]*\.ROSRECORDER'); do screen -S "${session}" -X stuff "^C"; done
-	screen -d -m -S mover${currentenv} zsh -i -c "mv ${3}/${currentenv} ${1}/"
+	sleep 5
+	screen -d -m -S mover${currentenv} zsh -i -c "mv ${3}/${currentenv}/* ${1}/${currentenv}/"
 	echo "Finished Processing ${currentenv}"
 done
