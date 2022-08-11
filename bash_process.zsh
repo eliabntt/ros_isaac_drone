@@ -40,10 +40,10 @@ do
 	echo "Launched"
 	sleep 200
 	result=1
-	cnt=45000
+	cnt=50000
 	while [ $result -eq 1 ]
 	do
-		sleep 5
+		sleep 1
 		screen -wipe > suppress_output
 		if ! screen -list | grep -q "ISAACSIM"; then
 			rm suppress_output
