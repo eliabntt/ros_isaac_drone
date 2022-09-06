@@ -37,10 +37,11 @@ do
 	mkdir -p ${3}/${currentenv}
 	screen -L -Logfile ${3}/${currentenv}/isaaclog.log -d -m -S ISAACSIM zsh -i -c "cd ${6} && ./python.sh standalone_examples/api/omni.isaac.ros_bridge/my_robot.py --/renderer/enabled='rtx,iray'  --config='/home/ebonetto/.local/share/ov/pkg/isaac_sim-2021.2.1/standalone_examples/api/omni.isaac.ros_bridge/config.yaml' --fix_env=${currentenv} && ./kill.sh"
 	screen -L -Logfile ${3}/${currentenv}/rosbag.log -d -m -S ROSRECORDER zsh -i -c "rosbag record -a -O ${1}/${currentenv}/${currentenv}.bag --split --size=1024 -b 0"
+	screen -L -Logfile ${3}/${currentenv}/rviz.log -d -m -S RVIZ zsh -i -c "cd /home/ebonetto/catkin_ws && source devel/setup.zsh && roslaunch exploration_manager rviz.launch"
 	echo "Launched"
 	sleep 200
 	result=1
-	cnt=60000
+	cnt=80000
 	while [ $result -eq 1 ]
 	do
 		sleep 1
