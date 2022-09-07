@@ -41,7 +41,7 @@ do
 	echo "Launched"
 	sleep 200
 	result=1
-	cnt=80000
+	cnt=90000
 	while [ $result -eq 1 ]
 	do
 		sleep 1
