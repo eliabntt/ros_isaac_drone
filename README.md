@@ -1,5 +1,7 @@
 # ros_isaac_drone
 
+## This repository is part of the [GRADE](https://eliabntt.github.io/GRADE-RR/home) project
+
 This is the repository containing the `catkin_ws` that has been used in the [GRADE]() project to control the robot during the dataset generation.
 
 It will download automatically our [FUEL](https://github.com/HKUST-Aerial-Robotics/FUEL) fork ([here](https://github.com/eliabntt/FUEL/)), our custom [controller](https://github.com/eliabntt/custom_6dof_joint_controller) and the other necessary packages with the corresponding edits.
@@ -36,3 +38,11 @@ In general the _placement_ can be run with `roslaunch collision_check collision_
 The _exploration software_ can be run with `roslaunch exploration_manager my_exploration.launch box_min_x:=--- box_min_y:=--- box_min_z:=--- box_max_x:=--- box_max_y:=--- box_max_z:=--- mav_name:=---` --> will launch FUEL and the custom controller package.
 
 To launch just the controller `roslaunch custom_joint_controller_ros publish_joint_commands_node.launch position_limit_x:=--- position_limit_y:=--- position_limit_z:=--- robot_id:=--- frame_id:=---`
+
+__________
+### CITATION
+If you find this work useful please cite our work as
+
+```
+
+```
